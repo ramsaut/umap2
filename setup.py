@@ -21,6 +21,7 @@ setup(
         'kittyfuzzer>=0.6.9',
         'pyserial',
         'six',
+        'pymtpdevice @ git+https://github.com/BinyaminSharet/Mtp.git',
     ],
     keywords='security,usb,fuzzing,kitty',
     entry_points={
