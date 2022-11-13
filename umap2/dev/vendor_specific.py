@@ -150,7 +150,10 @@ class USBVendorSpecificDevice(USBDevice):
         '''
         override the handle_request - in case a request is directed to an endpoint - we mark as supported
         '''
-        req = USBDeviceRequest(buf)
+        if not isinstance(buf,USBDeviceRequest):
+            req = USBDeviceRequest(buf)
+        else:
+            req = buf
 
         # figure out the intended recipient
         req_type = req.get_type()

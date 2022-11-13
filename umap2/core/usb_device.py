@@ -194,7 +194,10 @@ class USBDevice(USBBaseActor):
         return d
 
     def handle_request(self, buf):
-        req = USBDeviceRequest(buf)
+        if not isinstance(buf,USBDeviceRequest):
+            req = USBDeviceRequest(buf)
+        else:
+            req = buf
         self.debug('Received request: %s' % req)
 
         # figure out the intended recipient

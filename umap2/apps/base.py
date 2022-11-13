@@ -10,8 +10,8 @@ from serial import Serial, PARITY_NONE
 
 from umap2.phy.facedancer.max342x_phy import Max342xPhy
 from umap2.phy.gadgetfs.gadgetfs_phy import GadgetFsPhy
+from umap2.phy.greatfet.greatdancer import GreatDancer
 from umap2.utils.ulogger import set_default_handler_level
-
 
 class Umap2App(object):
 
@@ -78,6 +78,10 @@ class Umap2App(object):
         elif phy_type == 'gadgetfs':
             self.logger.debug('Physical interface is GadgetFs')
             phy = GadgetFsPhy(self)
+            return phy
+        elif phy_type == 'gf':
+            self.logger.debug('Physical interface is GreatFET')
+            phy = GreatDancer(self)
             return phy
         raise Exception('Phy type not supported: %s' % phy_type)
 
